@@ -7,10 +7,9 @@ A MicroPython project on ESP32 that reads distance using an ultrasonic sensor an
 ## 📌 Features
 
 - 🧠 Powered by **ESP32** and **MicroPython**
-- 📏 Uses **HC-SR04 Ultrasonic Sensor** to detect proximity
-- 🚨 Activates **buzzer** and **LEDs** when object is too close
-- 🔘 **Push button** to stop the alarm
-- 🔁 Automatically resets after alarm is cleared
+- 📏 Uses ** DHT22 ** to detect temperature
+- 🚨 Activates **buzzer** and **LEDs** when temperature rises
+- 🔁 normal reading after temperature decline
 
 ---
 
@@ -19,21 +18,19 @@ A MicroPython project on ESP32 that reads distance using an ultrasonic sensor an
 | Component        | Description                    |
 |------------------|--------------------------------|
 | ESP32            | Microcontroller                |
-| HC-SR04          | Ultrasonic distance sensor     |
+| DHT22            | Temperature sensor             |
 | Passive Buzzer   | For audible alarm              |
-| LED(s)           | For visual alarm               |
-| Push Button      | To disable alarm               |
+| LED BAR GRAPH    | For visual alarm               |
+| LCD 16X2(I2C)    | Temperature reader             |
 | Resistors        | 220Ω (for LED), 10kΩ (for button pull-up) |
 
 ---
 
 ## 🧠 Logic Flow
 
-1. Measure distance using HC-SR04.
-2. If distance < threshold (e.g. 20 cm):
+1. Measure temperature using DHT22.
+2. If temperature < 35°C:
    - Turn on LED and buzzer.
-3. If button is pressed:
-   - Turn off alarm and reset state.
 
 ---
 
@@ -53,7 +50,6 @@ You can view and test the circuit live below:
 | `main.py`        | MicroPython code for ESP32               |
 | `diagram.json`   | Wokwi circuit layout                     |
 | `ssd1306.py`     | (Optional) OLED support if used          |
-| `wokwi-project.txt` | Notes or Wokwi link (optional)        |
 
 ---
 
